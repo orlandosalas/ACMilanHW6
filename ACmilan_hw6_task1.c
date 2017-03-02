@@ -78,7 +78,11 @@ int AskQuestion(void)
 		/*  If more calcs, call GetRec(), Polar(), and Showit() */
 		else if (cont == 1)
 		{
-
+			float x, y;
+			printf("Please enter your x and y coordinates: ");
+			scanf("%f %f", &x, &y);
+			/*  Calculate polar coordinates, Call Polar() 
+			 *  and Call Showit() */
 		}
 		/*  If input is not one or zero, inform user */
 		else
