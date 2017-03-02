@@ -70,6 +70,7 @@ int AskQuestion(void)
 		/*  Scan users input. Second scan catches enter key*/
 		scanf("%d",&cont);
 		scanf("%c",&catch);
+		printf("The value you input is %d\n",cont);
 		/*  If no more calcs, exit loop */
 		if (cont == 0)
 		{
@@ -78,9 +79,10 @@ int AskQuestion(void)
 		/*  If more calcs, call GetRec(), Polar(), and Showit() */
 		else if (cont == 1)
 		{
-			float x, y;
-			printf("Please enter your x and y coordinates: ");
-			scanf("%f %f", &x, &y);
+			/*  if (x == 0 || y == 0)
+			{
+				Usage();
+			}  */
 			/*  Calculate polar coordinates, Call Polar() 
 			 *  and Call Showit() */
 		}
