@@ -47,9 +47,10 @@ void GetRec(double* x, double* y)
 
 void Polar(double* x, double* y, double* r, double* theta)
 {
-	if( x == 0)
+	if( (*x) == 0)
 	{
 		printf("Your X value cannot be zero, try again\n");
+		exit(1);
 	}
 	else
 	{
