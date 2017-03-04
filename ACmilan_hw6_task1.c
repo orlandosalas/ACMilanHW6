@@ -62,25 +62,26 @@ int AskQuestion(void)
 	while (1)	
 	{
 		/*  Declare variable for user input */
-		int cont;
+		char cont;
 		char catch;
 		/*  Prompt user if they would like to continue */
 		printf("Would you like to perform another calculation (Y/N)?\n");
 		printf("Y = 1, N = 0: ");
 		/*  Scan users input. Second scan catches enter key*/
-		scanf("%d",&cont);
+		scanf("%c",&cont);
 		scanf("%c",&catch);
 		/*  If no more calcs, exit loop */
-		if (cont == 0)
+		if (cont == '0')
 		{
 			break;
 		}
 		/*  If more calcs, call GetRec(), Polar(), and Showit() */
-		else if (cont == 1)
+		else if (cont == '1')
 		{
-			float x, y;
-			printf("Please enter your x and y coordinates: ");
-			scanf("%f %f", &x, &y);
+			/*  if (x == 0 || y == 0)
+			{
+				Usage();
+			}  */
 			/*  Calculate polar coordinates, Call Polar() 
 			 *  and Call Showit() */
 		}
