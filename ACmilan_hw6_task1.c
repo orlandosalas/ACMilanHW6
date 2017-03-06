@@ -16,11 +16,25 @@
 
 /* Function Prototypes */
 void Usage(void);
+void Polar(double* px, double* py, double* pr, double* ptheta);
+void Showit(double* pr, double* ptheta);
 int AskQuestion(void);
+void GetRec(double* px, double* py);
 
 /* Main Program */
 int main(int argc, char *argv[])
 {
+	double x, y, r, theta;
+	double* px;
+	double* py;
+	double* pr;
+	double* ptheta;
+
+	px = &x;
+	py = &y;
+	pr = &r;
+	ptheta = &theta;
+
 	/*  Verify User Input */
 	if (argc != 3)
 	{
@@ -28,10 +42,10 @@ int main(int argc, char *argv[])
 	}
 	else
 	{
-		/*  Declare and initialize variables */
+		/*  Initialize variables */
 		/*  Convert two user inputs to float  */
-		float x = atof(argv[1]);
-		float y = atof(argv[2]);
+		x = atof(argv[1]);
+		y = atof(argv[2]);
 		/*  Validate arguments are not characters or zeros */
 		if (x == 0)
 		{
@@ -39,10 +53,12 @@ int main(int argc, char *argv[])
 		}
 		else
 		{
-			/*  Calculate polar coordinates, Call Polar() 
-			 *  and Call Showit() */
+			/*  Calculate polar coordinates, Call Polar()*/
+			Polar(px, py, pr, ptheta);
+			/*  and Call Showit() */
+			Showit(pr, ptheta);
 			/* Call AskQuestion() */
-			AskQuestion();
+			AskQuestion(); // if Y: run GetRec if N: end program
 		}
 	}
 	return 0;
@@ -56,6 +72,22 @@ void Usage(void)
 	printf("Usage: Parameters must be non-zero floating points.\n");
 	return;
 }
+
+void Polar(double* px, double* py, double* pr, double* ptheta)
+{
+	*pr = sqrt( (*px) * (*px) + (*py) * (*py) );
+	*ptheta = atan( (*py) / (*px) );
+
+	return;
+}
+
+void Showit(double* pr, double* ptheta)
+{
+	printf("Polar: Radius = %lf with Angle %lf\n", *pr, *ptheta);
+	
+	return;
+}
+
 int AskQuestion(void)
 {
 	/* Begin Loop for performing more calculations */
