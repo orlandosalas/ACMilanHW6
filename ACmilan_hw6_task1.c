@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
 		float x = atof(argv[1]);
 		float y = atof(argv[2]);
 		/*  Validate arguments are not characters or zeros */
-		if (x == 0 || y == 0)
+		if (x == 0)
 		{
 			Usage();
 		}
