@@ -59,9 +59,12 @@ int main(int argc, char *argv[])
 			/*  and Call Showit() */
 			Showit(pr, ptheta);
 			/* Call AskQuestion() */
-			AskQuestion(); // if Y: run GetRec if N: end program
+			//AskQuestion(); // if Y: run GetRec if N: end program
 		}
 	}
+
+	AskQuestion();
+
 	return 0;
 }
 
@@ -70,7 +73,7 @@ int main(int argc, char *argv[])
 void Usage(void)
 {
 	printf("Usage: Please enter two parameters.\n");
-	printf("Usage: Parameters must be non-zero floating points.\n");
+	printf("Usage: First parameter (X) must be non-zero floating point.\n");
 	return;
 }
 
@@ -89,40 +92,40 @@ void Showit(double* pr, double* ptheta)
 	return;
 }
 
-int AskQuestion(void)
-{
+// int AskQuestion(void)
+//{
 	/* Begin Loop for performing more calculations */
-	while (1)	
-	{
+//	while (1)	
+//	{
 		/*  Declare variable for user input */
-		char cont;
-		char catch;
+//		char cont;
+//		char catch;
 		/*  Prompt user if they would like to continue */
-		printf("Would you like to perform another calculation (Y/N)?\n");
-		printf("Y = 1, N = 0: ");
+//		printf("Would you like to perform another calculation (Y/N)?\n");
+//		printf("Y = 1, N = 0: ");
 		/*  Scan users input. Second scan catches enter key*/
-		scanf("%c",&cont);
-		scanf("%c",&catch);
+//		scanf("%c",&cont);
+//		scanf("%c",&catch);
 		/*  If no more calcs, exit loop */
-		if (cont == '0')
-		{
-			break;
-		}
+//		if (cont == '0')
+//		{
+//			break;
+//		}
 		/*  If more calcs, call GetRec(), Polar(), and Showit() */
-		else if (cont == '1')
-		{
-			GetRec();
-			Polar();
-			Showit();
-		}
+//		else if (cont == '1')
+//		{
+//			GetRec();
+//			Polar();
+//			Showit();
+//		}
 		/*  If input is not one or zero, inform user */
-		else
-		{
-			printf("Bad input, try again. \n");
-		}
-	}
-	return 0;
-}
+//		else
+//		{
+//			printf("Bad input, try again. \n");
+//		}
+//	}
+//	return 0;
+//}
 
 void GetRec(double* px, double* py)
 {
