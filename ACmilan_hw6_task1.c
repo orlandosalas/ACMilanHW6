@@ -17,7 +17,7 @@
 
 /* Function Prototypes */
 void Usage(void);
-void Polar(double* px, double* py, double* pr, double* ptheta);
+void Polar(double x, double y, double* pr, double* ptheta);
 void Showit(double* pr, double* ptheta);
 int AskQuestion(void);
 void GetRec(double* px, double* py);
@@ -26,15 +26,17 @@ void GetRec(double* px, double* py);
 int main(int argc, char *argv[])
 {
 	double x, y, r, theta;
-	double* px;
-	double* py;
 	double* pr;
 	double* ptheta;
+//	double* px; //ONLY USE these in GetRec to modify value of x and y
+//	double* py;
 
-	px = &x;
-	py = &y;
+//	px = &x;
+//	py = &y;
 	pr = &r;
 	ptheta = &theta;
+
+
 
 	/*  Verify User Input */
 	if (argc != 3)
@@ -55,7 +57,7 @@ int main(int argc, char *argv[])
 		else
 		{
 			/*  Calculate polar coordinates, Call Polar()*/
-			Polar(px, py, pr, ptheta);
+			Polar(x, y, pr, ptheta);
 			/*  and Call Showit() */
 			Showit(pr, ptheta);
 			/* Call AskQuestion() */
@@ -63,7 +65,7 @@ int main(int argc, char *argv[])
 		}
 	}
 
-	AskQuestion();
+//	AskQuestion();
 
 	return 0;
 }
@@ -77,10 +79,10 @@ void Usage(void)
 	return;
 }
 
-void Polar(double* px, double* py, double* pr, double* ptheta)
+void Polar(double x, double y, double* pr, double* ptheta)
 {
-	*pr = sqrt( (*px) * (*px) + (*py) * (*py) );
-	*ptheta = atan( (*py) / (*px) );
+	*pr = sqrt( (x) * (x) + (y) * (y) );
+	*ptheta = atan( (y) / (x) );
 
 	return;
 }
