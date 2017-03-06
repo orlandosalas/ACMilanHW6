@@ -65,7 +65,7 @@ int main(int argc, char *argv[])
 		}
 	}
 
-	while( AskQuestion != 0)
+	while( AskQuestion() == 1)
 	{
 		AskQuestion();
 		GetRec(px, py);
@@ -101,10 +101,11 @@ void Showit(double* pr, double* ptheta)
 	return;
 }
 
- int AskQuestion(void)
+ int AskQuestion(void) // NEEDS REVISION still not correct. I think main looks better now
 {
 /* Begin Loop for performing more calculations */
-
+	while(1)	
+	{
 		/*  Declare variable for user input */
 		char cont;
 		char catch;
@@ -115,17 +116,21 @@ void Showit(double* pr, double* ptheta)
 		scanf("%c",&cont);
 		scanf("%c",&catch);
 		/*  If no more calcs, exit loop */
-		if (cont == '0'|| cont == '1')
+		if (cont == '0')
 		{
-			break;
+			exit(1);
 		}
 		/*  If more calcs, call GetRec(), Polar(), and Showit() */
 		/*  If input is not one or zero, inform user */
+		else if(cont == '1')
+		{
+			break;
+		}
 		else
 		{
 			printf("Bad input, try again. \n");
 		}
-
+	}
 	return 0;
 }
 
