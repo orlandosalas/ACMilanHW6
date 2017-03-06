@@ -28,11 +28,11 @@ int main(int argc, char *argv[])
 	double x, y, r, theta;
 	double* pr;
 	double* ptheta;
-//	double* px; //ONLY USE these in GetRec to modify value of x and y
-//	double* py;
+	double* px; //ONLY USE these in GetRec to modify value of x and y
+	double* py;
 
-//	px = &x;
-//	py = &y;
+	px = &x;
+	py = &y;
 	pr = &r;
 	ptheta = &theta;
 
@@ -65,6 +65,13 @@ int main(int argc, char *argv[])
 		}
 	}
 
+	while( AskQuestion != 0)
+	{
+		AskQuestion();
+		GetRec(px, py);
+		Polar(x, y, pr, ptheta);
+		Showit(pr, ptheta);
+	}
 //	AskQuestion();
 
 	return 0;
@@ -94,40 +101,33 @@ void Showit(double* pr, double* ptheta)
 	return;
 }
 
-// int AskQuestion(void)
-//{
-	/* Begin Loop for performing more calculations */
-//	while (1)	
-//	{
+ int AskQuestion(void)
+{
+/* Begin Loop for performing more calculations */
+
 		/*  Declare variable for user input */
-//		char cont;
-//		char catch;
+		char cont;
+		char catch;
 		/*  Prompt user if they would like to continue */
-//		printf("Would you like to perform another calculation (Y/N)?\n");
-//		printf("Y = 1, N = 0: ");
+		printf("Would you like to perform another calculation (Y/N)?\n");
+		printf("Y = 1, N = 0: ");
 		/*  Scan users input. Second scan catches enter key*/
-//		scanf("%c",&cont);
-//		scanf("%c",&catch);
+		scanf("%c",&cont);
+		scanf("%c",&catch);
 		/*  If no more calcs, exit loop */
-//		if (cont == '0')
-//		{
-//			break;
-//		}
+		if (cont == '0'|| cont == '1')
+		{
+			break;
+		}
 		/*  If more calcs, call GetRec(), Polar(), and Showit() */
-//		else if (cont == '1')
-//		{
-//			GetRec();
-//			Polar();
-//			Showit();
-//		}
 		/*  If input is not one or zero, inform user */
-//		else
-//		{
-//			printf("Bad input, try again. \n");
-//		}
-//	}
-//	return 0;
-//}
+		else
+		{
+			printf("Bad input, try again. \n");
+		}
+
+	return 0;
+}
 
 void GetRec(double* px, double* py)
 {
