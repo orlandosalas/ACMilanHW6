@@ -13,6 +13,7 @@
  */
 #include <stdio.h>		/* For Standard I/O */
 #include <stdlib.h>		/* For Standard Library*/
+#include <math.h>
 
 /* Function Prototypes */
 void Usage(void);
@@ -110,12 +111,9 @@ int AskQuestion(void)
 		/*  If more calcs, call GetRec(), Polar(), and Showit() */
 		else if (cont == '1')
 		{
-			/*  if (x == 0 || y == 0)
-			{
-				Usage();
-			}  */
-			/*  Calculate polar coordinates, Call Polar() 
-			 *  and Call Showit() */
+			GetRec();
+			Polar();
+			Showit();
 		}
 		/*  If input is not one or zero, inform user */
 		else
@@ -126,3 +124,11 @@ int AskQuestion(void)
 	return 0;
 }
 
+void GetRec(double* px, double* py)
+{
+	printf("Please enter the X value of your caresian coordinate: ");
+	scanf("%lf", &(*px));
+	printf("Please enter the Y value of your caresian coordinate: ");
+	scanf("%lf", &(*py));
+
+}
