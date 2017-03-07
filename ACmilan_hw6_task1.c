@@ -15,6 +15,7 @@
 #include <stdlib.h>		/* For Standard Library*/
 #include <math.h>
 
+#define PI 3.141593
 /* Function Prototypes */
 void Usage(void);
 void Polar(double x, double y, double* pr, double* ptheta);
@@ -25,6 +26,7 @@ void GetRec(double* px, double* py);
 /* Main Program */
 int main(int argc, char *argv[])
 {
+	int i;
 	double x, y, r, theta;
 	double* pr;
 	double* ptheta;
@@ -38,19 +40,18 @@ int main(int argc, char *argv[])
 
 
 
-	/*  Verify User Input */
+	/*  Validate arguments are not characters or zeros */
 	if (argc != 3)
 	{
 		Usage();
 	}
-	else
+	else 
 	{
 		/*  Initialize variables */
 		/*  Convert two user inputs to float  */
 		x = atof(argv[1]);
 		y = atof(argv[2]);
-		/*  Validate arguments are not characters or zeros */
-		if (x == 0)
+		if (x == 0 || y == 0)
 		{
 			Usage();
 		}
@@ -62,18 +63,27 @@ int main(int argc, char *argv[])
 			Showit(pr, ptheta);
 			/* Call AskQuestion() */
 			//AskQuestion(); // if Y: run GetRec if N: end program
+			do
+			{
+				i = AskQuestion();
+				if (i == 1)
+				{
+					GetRec(px, py);
+					Polar(x, y, pr, ptheta);
+					Showit(pr, ptheta);
+				}
+				else if (i == 0)
+				{
+					printf("Thank you for using our program.\n");
+					break;
+				}
+				else
+				{
+					printf("Bad input, try again.\n");
+				}
+			}while (i != 0);
 		}
 	}
-
-	while( AskQuestion() == 1)
-	{
-		AskQuestion();
-		GetRec(px, py);
-		Polar(x, y, pr, ptheta);
-		Showit(pr, ptheta);
-	}
-//	AskQuestion();
-
 	return 0;
 }
 
@@ -81,15 +91,16 @@ int main(int argc, char *argv[])
 /* Function Defenitions */
 void Usage(void)
 {
-	printf("Usage: Please enter two parameters.\n");
-	printf("Usage: First parameter (X) must be non-zero floating point.\n");
+	printf("Usage: Please enter floating point two parameters (X and Y).\n");
+	printf("Usage: First parameter (X) must be non-zero.\n");
+
 	return;
 }
 
 void Polar(double x, double y, double* pr, double* ptheta)
 {
 	*pr = sqrt( (x) * (x) + (y) * (y) );
-	*ptheta = atan( (y) / (x) );
+	*ptheta = ( atan( (y) / (x) ) ) * 180 / PI;
 
 	return;
 }
@@ -101,37 +112,18 @@ void Showit(double* pr, double* ptheta)
 	return;
 }
 
- int AskQuestion(void) // NEEDS REVISION still not correct. I think main looks better now
+ int AskQuestion(void)
 {
-/* Begin Loop for performing more calculations */
-	while(1)	
-	{
-		/*  Declare variable for user input */
-		char cont;
-		char catch;
-		/*  Prompt user if they would like to continue */
-		printf("Would you like to perform another calculation (Y/N)?\n");
-		printf("Y = 1, N = 0: ");
-		/*  Scan users input. Second scan catches enter key*/
-		scanf("%c",&cont);
-		scanf("%c",&catch);
-		/*  If no more calcs, exit loop */
-		if (cont == '0')
-		{
-			exit(1);
-		}
-		/*  If more calcs, call GetRec(), Polar(), and Showit() */
-		/*  If input is not one or zero, inform user */
-		else if(cont == '1')
-		{
-			break;
-		}
-		else
-		{
-			printf("Bad input, try again. \n");
-		}
-	}
-	return 0;
+	/*  Declare variable for user input */
+	int cont;
+	char catch;
+	/*  Prompt user if they would like to continue */
+	printf("Would you like to perform another calculation (Y/N)?\n");
+	printf("Y = 1, N = 0: ");
+	/*  Scan users input. Second scan catches enter key*/
+	scanf("%d",&cont);
+	scanf("%c",&catch);
+	return cont;
 }
 
 void GetRec(double* px, double* py)
@@ -140,5 +132,4 @@ void GetRec(double* px, double* py)
 	scanf("%lf", &(*px));
 	printf("Please enter the Y value of your caresian coordinate: ");
 	scanf("%lf", &(*py));
-
 }
