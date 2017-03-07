@@ -136,7 +136,7 @@ void Showit(double* pr, double* ptheta)
 			printf("Bad input, try again. \nY=1, N = 0;\n");
 		}
 		}
-	while(cont != 0 || cont != 1);
+	//while(cont != 0 || cont != 1); Repeated run error. delete this and try something else
 	
 	return cont;
 	}
