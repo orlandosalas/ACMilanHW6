@@ -130,10 +130,14 @@ void Showit(double* pr, double* ptheta)
 
 void GetRec(double* px, double* py)
 {
-	printf("Please enter the X value of your caresian coordinate: ");
-	scanf("%lf", &(*px));
-	printf("Please enter the Y value of your caresian coordinate: ");
-	scanf("%lf", &(*py));
+	do
+	{	
+		printf("Please enter the 'non zero' X value of your caresian coordinate: ");
+		scanf("%lf", &(*px));
+		printf("Please enter the Y value of your caresian coordinate: ");
+		scanf("%lf", &(*py));
+	}
+	while( (*px) == 0);
 
 	return;
 }
