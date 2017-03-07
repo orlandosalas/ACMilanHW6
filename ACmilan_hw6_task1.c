@@ -134,10 +134,11 @@ void GetRec(double* px, double* py)
 	{	
 		printf("Please enter the 'non zero' X value of your caresian coordinate: ");
 		scanf("%lf", &(*px));
-		printf("Please enter the Y value of your caresian coordinate: ");
-		scanf("%lf", &(*py));
 	}
 	while( (*px) == 0);
+
+	printf("Please enter the Y value of your caresian coordinate: ");
+	scanf("%lf", &(*py));
 
 	return;
 }
