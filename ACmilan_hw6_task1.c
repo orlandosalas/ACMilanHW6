@@ -51,7 +51,7 @@ int main(int argc, char *argv[])
 		/*  Convert two user inputs to float  */
 		x = atof(argv[1]);
 		y = atof(argv[2]);
-		if (x == 0 || y == 0)
+		if (x == 0 )// I removed " || y == 0 " 
 		{
 			Usage();
 		}
@@ -92,7 +92,8 @@ int main(int argc, char *argv[])
 /* Function Defenitions */
 void Usage(void)
 {
-	printf("Usage: Please enter floating point two parameters (X and Y).\n");
+	printf("Usage: ./ACmilan_hw6_task1 <float1 [X]> <float2 [Y]>\n");
+	printf("Usage: Please enter two floating points(X and Y).\n");
 	printf("Usage: First parameter (X) must be non-zero.\n");
 
 	return;
