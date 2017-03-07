@@ -84,6 +84,7 @@ int main(int argc, char *argv[])
 			}while (i != 0);
 		}
 	}
+
 	return 0;
 }
 
@@ -114,6 +115,7 @@ void Showit(double* pr, double* ptheta)
 
  int AskQuestion(void)
 {
+<<<<<<< HEAD
 	/*  Declare variable for user input */
 	int cont;
 	char catch;
@@ -124,6 +126,43 @@ void Showit(double* pr, double* ptheta)
 	scanf("%d",&cont);
 	scanf("%c",&catch);
 	return cont;
+=======
+/* Begin Loop for performing more calculations */
+	{
+		/*  Declare variable for user input */
+	int cont;
+	int catch;
+		/*  Prompt user if they would like to continue */
+		printf("Would you like to perform another calculation (Y/N)?\n");
+		printf("Y = 1, N = 0: ");
+		/*  Scan users input. Second scan catches enter key*/
+		scanf("%d",&cont);
+		scanf("%d",&catch);
+		/*  If no more calcs, exit loop */
+		do
+		{
+
+		
+		if (cont == '0')
+		{
+			exit(1);
+		}
+		/*  If more calcs, call GetRec(), Polar(), and Showit() */
+		/*  If input is not one or zero, inform user */
+		else if(cont == '1')
+		{
+			continue;
+		}
+		else
+		{
+			printf("Bad input, try again. \nY=1, N = 0;\n");
+		}
+		}
+	//while(cont != 0 || cont != 1); Repeated run error. delete this and try something else
+	
+	return cont;
+	}
+>>>>>>> a78850474677d8c88be42217eeadcc7c21d21603
 }
 
 void GetRec(double* px, double* py)
@@ -132,4 +171,9 @@ void GetRec(double* px, double* py)
 	scanf("%lf", &(*px));
 	printf("Please enter the Y value of your caresian coordinate: ");
 	scanf("%lf", &(*py));
+<<<<<<< HEAD
+=======
+
+	return;
+>>>>>>> a78850474677d8c88be42217eeadcc7c21d21603
 }
