@@ -64,13 +64,15 @@ int main(int argc, char *argv[])
 			//AskQuestion(); // if Y: run GetRec if N: end program
 		}
 	}
+	
+	AskQuestion();
 
 	while( AskQuestion() == 1)
 	{
-		AskQuestion();
 		GetRec(px, py);
 		Polar(x, y, pr, ptheta);
 		Showit(pr, ptheta);
+		AskQuestion();
 	}
 //	AskQuestion();
 
@@ -104,18 +106,21 @@ void Showit(double* pr, double* ptheta)
  int AskQuestion(void) // NEEDS REVISION still not correct. I think main looks better now
 {
 /* Begin Loop for performing more calculations */
-	while(1)	
 	{
 		/*  Declare variable for user input */
-		char cont;
-		char catch;
+	int cont;
+	int catch;
 		/*  Prompt user if they would like to continue */
 		printf("Would you like to perform another calculation (Y/N)?\n");
 		printf("Y = 1, N = 0: ");
 		/*  Scan users input. Second scan catches enter key*/
-		scanf("%c",&cont);
-		scanf("%c",&catch);
+		scanf("%d",&cont);
+		scanf("%d",&catch);
 		/*  If no more calcs, exit loop */
+		do
+		{
+
+		
 		if (cont == '0')
 		{
 			exit(1);
@@ -124,14 +129,17 @@ void Showit(double* pr, double* ptheta)
 		/*  If input is not one or zero, inform user */
 		else if(cont == '1')
 		{
-			break;
+			continue;
 		}
 		else
 		{
-			printf("Bad input, try again. \n");
+			printf("Bad input, try again. \nY=1, N = 0;\n");
 		}
+		}
+	while(cont != 0 || cont != 1);
+	
+	return cont;
 	}
-	return 0;
 }
 
 void GetRec(double* px, double* py)
@@ -141,4 +149,5 @@ void GetRec(double* px, double* py)
 	printf("Please enter the Y value of your caresian coordinate: ");
 	scanf("%lf", &(*py));
 
+	return;
 }
